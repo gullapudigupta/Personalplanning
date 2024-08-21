@@ -1,5 +1,5 @@
 import streamlit as st #all streamlit commands will be available through the "st" alias
-import hackReco #reference to local lib script
+import hackreco
 
 st.set_page_config(page_title="Personalized Travel Itinerary Planner") #HTML title
 st.title("Personalized Travel Itinerary Planner") #page title
@@ -87,8 +87,8 @@ if input_user_id:
 
     if "llm_chain" not in st.session_state:
         if input_user_id:
-            st.session_state["llm_app"] = hackReco
-            st.session_state["llm_chain"] = hackReco.get_bedrock_chain(user_id)
+            st.session_state["llm_app"] = hackreco
+            st.session_state["llm_chain"] = hackreco.get_bedrock_chain(int(user_id))
 
     with st.container():
         for query, response in zip(st.session_state.questions, st.session_state.answers):
